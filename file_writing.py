@@ -27,29 +27,22 @@ class NameError(Exception):
         self.txt = txt
 def get_info():
     is_valid_first_name = False
-    while not is_valid_first_name:
+    while not is_valid_first_name or not is_valid_last_name:
         try:
             first_name = input("Введите имя: ")
             if len(first_name) < 2:
                 raise NameError("Не валидное имя")
-            else:
-                is_valid_first_name = True
-        except NameError as err:
-            print(err)
-            continue
-    
-    is_valid_last_name = False    
-    while not is_valid_last_name:
-        try:
             last_name = input("Введите фамилию: ")
             if len(last_name) < 2:
                 raise NameError("Не валидная фамилия")
+            
             else:
+                is_valid_first_name = True
                 is_valid_last_name = True
         except NameError as err:
             print(err)
             continue
-
+    
     
     is_valid_phone = False
     while not is_valid_phone:
@@ -124,7 +117,8 @@ def change_file(file_name, num):
                             raise NameError("Не валидное имя")
                         else:
                             is_valid_first_name = True
-                    except NameError as err:                        
+                    except NameError as err:
+                        # print(err)
                         continue
 
                 is_valid_last_name = False
@@ -166,7 +160,7 @@ def main():
             del_command = input("Введите телефон адресата, данные которого надо удалить: ")      
             delete_file(file_name, del_command)
         elif command == "e":  
-            change_command = input("Введите телефон адресата, данные которого надо изменить: ")
-            change_file(file_name, change_command)
+            num = input("Введите телефон адресата, данные которого надо изменить: ")
+            change_file(file_name, num)
 
 main()
