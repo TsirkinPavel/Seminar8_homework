@@ -143,6 +143,7 @@ def main():
         elif command == "n":  
             num = input("Введите телефон адресата, данные которого перенесем из справочника NEW?: ")
             replace_file(file_name, sourse_file_name, num)
+        input("Нажмите Enter, чтобы продолжить")
 
 sourse_file_name = "new.csv"
 file_name = "phone.csv"
